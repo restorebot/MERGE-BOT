@@ -263,7 +263,7 @@ async def video_handler(c: Client, m: Message):
             text=MessageText, reply_markup=InlineKeyboardMarkup(markup)
         )
         replyDB.update({m.from_user.id: reply_.id})
-    elif len(queueDB.get(m.from_user.id)["videos"]) > 10:
+    elif len(queueDB.get(m.from_user.id)["videos"]) > 50:
         markup = await MakeButtons(c, m, queueDB)
         await editable.text(
             "Max 10 videos allowed", reply_markup=InlineKeyboardMarkup(markup)
